@@ -40,6 +40,9 @@ for quizNum in range(35):
     quizFile.write('\n\n')
     
     # Shuffle the order of the states.
+
+    states = list(capitals.keys())
+
     random.shuffle(states)
     
     # Loop through all 50 states, making a question for each.
@@ -61,4 +64,20 @@ for quizNum in range(35):
 
         # TODO: Write the question and answer options to the quiz file.
 
-        # TODO: Write the answer key to a file.
+        quizFile.write(f'{questionNum + 1}. What is the capital of {states[questionNum]}?\n')
+
+
+        for i in range(4):
+
+            quizFile.write(f"  {'ABCD'[i]}. {answerOptions[i]}\n")
+            
+            quizFile.write('\n')
+
+        # Write the answer key to a file. (Proper indentation under the for loop)
+        
+        answerKeyFile.write(f"{questionNum + 1}. {'ABCD'[answerOptions.index(correctAnswer)]}\n")
+
+    quizFile.close()
+
+    answerKeyFile.close()
+
